@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <form action="/" method="post">
+            <label for="city">Enter City:</label>
+            <input type="text" id="city" name="city" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        
+        {% if city %}
+            <div class="result-container">
+                <h2>{{ city }}</h2>
+                {% if error_message %}
+                    <p>{{ error_message }}</p>
+                {% else %}
+                    <p>Temperature: {{ temperature }} °C</p>
+                    <p>Humidity: {{ humidity }}% {{ humidity_icon }}</p>
+                    <p>Sunrise: {{ local_sunrise.strftime('%Y-%m-%d %H:%M:%S %Z') }}</p>
+                    <p>Sunset: {{ local_sunset.strftime('%Y-%m-%d %H:%M:%S %Z') }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
