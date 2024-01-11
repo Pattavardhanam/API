@@ -71,6 +71,6 @@ def index(): #Route Function
                            local_sunset=local_sunset,
                            error_message=error_message)
 
-#Runs the Flask Appp
+#Runs the Flask App
 if __name__ == '__main__':
     app.run(debug=True)
